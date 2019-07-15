@@ -1,7 +1,9 @@
 # git hook
 
 ## pre-push
-a git hook creating a labfolder entry for each push
+a git hook creating a labfolder entry for each push.
+
+Author: Stephan Janosch; janosch@mpi-cbg.de
 
 required command line tools: 
 * curl
