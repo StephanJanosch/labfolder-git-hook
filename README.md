@@ -31,3 +31,4 @@ USER='user'
 LABFOLDER_HOST='labfolder.server.de'
 ```
 
+![](doc/images/git_push_entries.png)
