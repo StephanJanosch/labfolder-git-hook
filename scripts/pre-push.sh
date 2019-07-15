@@ -71,6 +71,5 @@ POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
     }\
 ]}"
 
-#comment 1
 
 curl -s -f -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/elements/data"
