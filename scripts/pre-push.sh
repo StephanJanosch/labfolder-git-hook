@@ -48,16 +48,15 @@ fi
 # we have a valid $TOKEN
 
 #create entry
-#POSTJSON="{\"title\": \"test entry 1\",\"project_id\": \"$PROJECTID\"}"
-#ENTRY=`curl -s -f -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/entries"`
-#if [ $? != 0 ]
-#then
-#    echo "could not create labfolder entry"
-#    exit 1
-#fi
-#ENTRID=`echo $ENTRY | jq -r '.id'`
+POSTJSON="{\"title\": \"test entry 1\",\"project_id\": \"$PROJECTID\"}"
+ENTRY=`curl -s -f -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/entries"`
+if [ $? != 0 ]
+then
+    echo "could not create labfolder entry"
+    exit 1
+fi
+ENTRID=`echo $ENTRY | jq -r '.id'`
 
-ENTRID=133379
 
 DESC="bla"
 POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
