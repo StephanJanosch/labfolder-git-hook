@@ -66,6 +66,7 @@ POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
       \"title\": \"Commit\", \
       \"children\": [ \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"Descriptive XYZ\",\"description\": \"$DESC\"}, \
+{\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"Descriptive XYZ\",\"description\": \"$DESC\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"Descriptive XYZ\",\"description\": \"$DESC\"} \
       ]\
     }\
