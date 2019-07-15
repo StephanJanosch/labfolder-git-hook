@@ -29,6 +29,8 @@ then
     then
         #invalid token, so get a new one
         echo "aquiring new token"
+        echo "user provided: $USER"
+        read -s -p "password: " PASSWORD
         POSTAUTH="{\"user\":\"$USER\",\"password\":\"$PASSWORD\"}"
         RESULT=`curl -s -H "Content-Type: application/json"  -X POST -d "$POSTAUTH" https://$LABFOLDER_HOST/api/v2/auth/login`
         TOKEN=`echo "$RESULT" | jq -r '.token'`
