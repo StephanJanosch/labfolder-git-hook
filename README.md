@@ -9,8 +9,9 @@ required command line tools:
 * curl
 * jq
 
-Also 2 files are required:
+**note**: depending on your IDE you might not see the password prompt asking for your labfolder password.
 
+Also 2 files are required:
 
 #### $GIT_DIR/projectId.sh
 this files configures the Labfolder project ID where entries go
