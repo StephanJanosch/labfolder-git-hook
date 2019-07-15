@@ -1,14 +1,30 @@
 # git hook
 
 ## pre-push
+a git hook creating a labfolder entry for each push
 
-~/.labfolder_credentials.sh
+required command line tools: 
+* curl
+* jq
+
+Also 2 files are required:
+
+
+#### $GIT_DIR/projectId.sh
+this files configures the Labfolder project ID where entries go
+
+```bash
+#!/bin/sh
+PROJECTID=3358
 ```
-#!/usr/bin/env bash
+
+#### ~/.labfolder_credentials.sh
+
+
+```bash 
+#!/bin/sh
 
 USER='user'
-PASSWORD='password'
 LABFOLDER_HOST='labfolder.server.de'
 ```
 
-required shell tools: bash,curl,jq

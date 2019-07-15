@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# An example hook script to verify what is about to be pushed.  Called by "git
-# push" after it has checked the remote status, but before anything has been
-# pushed.  If this script exits with a non-zero status nothing will be pushed.
+# Author: Stephan Janosch, janosch@mpi-cbg.de
+
+# If this script exits with a non-zero status nothing will be pushed.
 #
 # This hook is called with the following parameters:
 #
@@ -16,18 +16,17 @@
 #
 #   <local ref> <local sha1> <remote ref> <remote sha1>
 #
+PROJECT_ID_FILE="projectId.sh"
+CREDENTIALSFILE="$HOME/.labfolder_credentials.sh"
+TOKENFILE="$HOME/.labfolder_token.sh"
 
-if [ ! -f projectId.sh ]
+if [ ! -f $PROJECT_ID_FILE ]
 then
     echo "error: No Labfolder Project ID found: projectId.sh"
     exit 1
 else
-    source projectId.sh
+    source $PROJECT_ID_FILE
 fi
-
-
-CREDENTIALSFILE="$HOME/.labfolder_credentials.sh"
-TOKENFILE="$HOME/.labfolder_token.sh"
 
 if [ ! -f $CREDENTIALSFILE ]
 then
@@ -63,7 +62,7 @@ then
         echo "user provided: $USER. Please enter password on $LABFOLDER_HOST"
         read -s -p "password: " PASSWORD
         POSTAUTH="{\"user\":\"$USER\",\"password\":\"$PASSWORD\"}"
-        RESULT=`curl -s -H "Content-Type: application/json"  -X POST -d "$POSTAUTH" https://$LABFOLDER_HOST/api/v2/auth/login`
+        RESULT=`curl -s -H "Content-Type: application/json"  -X POST -d "$POSTAUTH" "https://$LABFOLDER_HOST/api/v2/auth/login"`
         TOKEN=`echo "$RESULT" | jq -r '.token'`
         echo "#!/usr/bin/env bash" > "$TOKENFILE"
         echo "TOKEN=\"$TOKEN\"" >> "$TOKENFILE"
