@@ -14,7 +14,10 @@ required command line tools:
 Also 2 files are required:
 
 #### $GIT_DIR/projectId.sh
-this files configures the Labfolder project ID where entries go
+this files configures the Labfolder project ID where entries go.
+
+The project id can be found in the url bar of your browser.
+![](doc/images/labfolder_project_id.png)
 
 ```bash
 #!/bin/sh
