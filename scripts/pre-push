@@ -60,7 +60,9 @@ then
         #invalid token, so get a new one
         echo "No valid labfolder token found. Aquriring new one."
         echo "user provided: $USER. Please enter password on $LABFOLDER_HOST"
-        read -s -p "password: " PASSWORD
+        echo "enter PASSWOrd"
+        #read -s -p "password: " PASSWORD
+        read PASSWORD
         POSTAUTH="{\"user\":\"$USER\",\"password\":\"$PASSWORD\"}"
         RESULT=`curl -s -H "Content-Type: application/json"  -X POST -d "$POSTAUTH" "https://$LABFOLDER_HOST/api/v2/auth/login"`
         TOKEN=`echo "$RESULT" | jq -r '.token'`
