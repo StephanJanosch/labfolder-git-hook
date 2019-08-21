@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Author: Stephan Janosch, janosch@mpi-cbg.de
 
@@ -60,9 +60,7 @@ then
         #invalid token, so get a new one
         echo "No valid labfolder token found. Aquriring new one."
         echo "user provided: $USER. Please enter password on $LABFOLDER_HOST"
-        echo "enter PASSWOrd"
-        THISTTY=`tty`
-        read -s -p "password: " PASSWORD < $THISTTY
+        read -s -p "password: " PASSWORD </dev/tty
         POSTAUTH="{\"user\":\"$USER\",\"password\":\"$PASSWORD\"}"
         RESULT=`curl -s -H "Content-Type: application/json"  -X POST -d "$POSTAUTH" "https://$LABFOLDER_HOST/api/v2/auth/login"`
         TOKEN=`echo "$RESULT" | jq -r '.token'`
