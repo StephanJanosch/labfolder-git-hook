@@ -6,6 +6,7 @@ a git hook creating a labfolder entry for each push.
 Author: Stephan Janosch; janosch@mpi-cbg.de
 
 command line dependencies: 
+* bash
 * curl
 * jq
 
