@@ -64,6 +64,13 @@ then
         read -s -p "password: " PASSWORD </dev/tty
         POSTAUTH="{\"user\":\"$USER\",\"password\":\"$PASSWORD\"}"
         RESULT=`curl -s -H "Content-Type: application/json"  -X POST -d "$POSTAUTH" "https://$LABFOLDER_HOST/api/v2/auth/login"`
+        MESSAGE=`echo $RESULT | jq -r '.message'`
+        if [[ $MESSAGE == "Invalid login" ]]
+        then
+        	echo "Error from Labfolder: $MESSAGE"
+        	echo "Exiting"
+        	exit 1
+        fi
         TOKEN=`echo "$RESULT" | jq -r '.token'`
         echo "#!/usr/bin/env bash" > "$TOKENFILE"
         echo "TOKEN=\"$TOKEN\"" >> "$TOKENFILE"
@@ -88,11 +95,13 @@ url="$2"
 
 while read local_ref local_sha remote_ref remote_sha
 do
+		LOGMESSAGE=`echo git log --pretty=format:'%s' $local_sha..HEAD`
         POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
     { \
       \"type\": \"DATA_ELEMENT_GROUP\", \
       \"title\": \"Push\", \
       \"children\": [ \
+{\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"log message\",\"description\": \"$LOGMESSAGE\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"local_ref\",\"description\": \"$local_ref\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"local_sha\",\"description\": \"$local_sha\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"remote_ref\",\"description\": \"$remote_ref\"}, \
@@ -110,4 +119,4 @@ curl -f -s -S -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POST
             exit 1
         fi
 done
-exit 0
+exit 1
