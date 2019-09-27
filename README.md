@@ -13,6 +13,12 @@ command line dependencies:
 The hook will ask you for your labfolder password, in case it cannot find a valid token in `$HOME/.labfolder_token.sh` 
  which is being created during usage.
 
+#### usage
+
+* Copy `scripts/pre-push` to `$PROJECT_ROOT/.git/pre-push`
+* create 2 needed files below
+* git push as usual and enter password if needed
+
 **note**: depending on your IDE you might not see the password prompt asking for your labfolder password.
 
 Also 2 files are required:
