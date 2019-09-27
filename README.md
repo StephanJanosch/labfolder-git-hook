@@ -39,3 +39,7 @@ LABFOLDER_HOST='labfolder.server.de'
 
 ![](doc/images/git_push_entries.png)
 
+
+#### Updates
+
+* 2019-09-27: added log messages
