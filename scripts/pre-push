@@ -119,4 +119,4 @@ curl -f -s -S -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POST
             exit 1
         fi
 done
-exit 1
+exit 0
