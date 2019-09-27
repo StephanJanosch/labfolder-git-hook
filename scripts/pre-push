@@ -95,7 +95,7 @@ url="$2"
 
 while read local_ref local_sha remote_ref remote_sha
 do
-		LOGMESSAGE=`git log --pretty=format:"%s" $remote_sha..$local_sha`
+		LOGMESSAGE=`git log --pretty=format:"%s" $remote_sha..$local_sha | tr '\n' ','`
         POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
     { \
       \"type\": \"DATA_ELEMENT_GROUP\", \
@@ -116,6 +116,7 @@ curl -f -s -S -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POST
         if [ $? != 0 ]
         then
             echo "error: could not create labfolder data element entry"
+            echo $POSTJSON | jq
             exit 1
         fi
 done
