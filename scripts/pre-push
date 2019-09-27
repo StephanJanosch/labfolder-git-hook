@@ -95,13 +95,13 @@ url="$2"
 
 while read local_ref local_sha remote_ref remote_sha
 do
-		LOGMESSAGE=`git log --pretty=format:"%s" $remote_sha..$local_sha | tr '\n' ','`
+		LOGMESSAGE=`git log --pretty=format:"%s" $remote_sha..$local_sha | tr '\n' ', '`
         POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
     { \
       \"type\": \"DATA_ELEMENT_GROUP\", \
       \"title\": \"Push\", \
       \"children\": [ \
-{\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"log message\",\"description\": \"$LOGMESSAGE\"}, \
+{\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"log messages\",\"description\": \"$LOGMESSAGE\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"local_ref\",\"description\": \"$local_ref\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"local_sha\",\"description\": \"$local_sha\"}, \
 {\"type\": \"DESCRIPTIVE_DATA_ELEMENT\",\"title\": \"remote_ref\",\"description\": \"$remote_ref\"}, \
