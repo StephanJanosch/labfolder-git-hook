@@ -9,6 +9,9 @@ required command line tools:
 * curl
 * jq
 
+The hook will ask you for your labfolder password, in case it cannot find a valid token in `$HOME/.labfolder_token.sh` 
+ which is being created during usage.
+
 **note**: depending on your IDE you might not see the password prompt asking for your labfolder password.
 
 Also 2 files are required:
@@ -35,3 +38,4 @@ LABFOLDER_HOST='labfolder.server.de'
 ```
 
 ![](doc/images/git_push_entries.png)
+
