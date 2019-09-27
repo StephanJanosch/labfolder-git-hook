@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Author: Stephan Janosch, janosch@mpi-cbg.de
 
