@@ -95,7 +95,7 @@ url="$2"
 
 while read local_ref local_sha remote_ref remote_sha
 do
-		LOGMESSAGE=`echo git log --pretty=format:"%s" $remote_sha..$local_sha`
+		LOGMESSAGE=`git log --pretty=format:"%s" $remote_sha..$local_sha`
         POSTJSON="{\"entry_id\": \"$ENTRID\",  \"data_elements\": [ \
     { \
       \"type\": \"DATA_ELEMENT_GROUP\", \
