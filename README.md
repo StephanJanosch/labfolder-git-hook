@@ -1,7 +1,7 @@
 # git hook
 
 ## pre-push
-a git hook creating a labfolder entry for each push.
+a [git hook](https://git-scm.com/book/de/v1/Git-individuell-einrichten-Git-Hooks) creating a labfolder entry for each push.
 
 Author: Stephan Janosch; janosch@mpi-cbg.de
 
