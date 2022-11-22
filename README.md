@@ -6,7 +6,7 @@ a [git hook](https://git-scm.com/book/de/v1/Git-individuell-einrichten-Git-Hooks
 Author: Stephan Janosch; janosch@mpi-cbg.de
 
 command line dependencies: 
-* bash
+* bash (new MacOs use zsh by default)
 * curl
 * jq
 
