@@ -1,0 +1,7 @@
+check_filesizes_for_github:
+  script:
+    - if [ `find . -type f -size +100M | wc -l` -gt 0 ]; then
+    - echo "big files detected";
+    - echo "files to big for github!"
+    - exit 1;
+    - fi
