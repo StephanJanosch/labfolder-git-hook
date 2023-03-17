@@ -55,7 +55,7 @@ then
 #    curl failed, now check for the reason
     PROJECTS=`curl  -s -u "$TOKEN:" -G  "https://$LABFOLDER_HOST/api/v2/projects?limit=&offset="`
     MESSAGE=`echo $PROJECTS | jq -r '.message'`
-    if [[ $MESSAGE == "INVALID_TOKEN" ]]
+    if [[ $MESSAGE == "Invalid token" ]]
     then
         #invalid token, so get a new one
         echo "No valid labfolder token found. Aquriring new one."
