@@ -1,54 +1,31 @@
-# git hook
+# git hook for Labfolder
 
-## pre-push
-a [git hook](https://git-scm.com/book/de/v1/Git-individuell-einrichten-Git-Hooks) creating a labfolder entry for each push.
+This project is about using git hook in conjunction with the electronic lab notebook (ELN) Labfolder.
 
-Author: Stephan Janosch; janosch@mpi-cbg.de
+* Project Code : `labfolder-git-hook`
+* Lab : Scientific Computing Facility @mpi-cbg.de
+* Contact Person : [Stephan Janosch](mailto:janosch@extern.mpi-cbg.de)
+* Scripts Repository : https://gitlab.gwdg.de/labfolder-api-tools/git-hook
+* Start Date: July 2019
+* Data location : n/a
 
-command line dependencies: 
+Currently only one git hook is used: [pre-push](#pre-push). For changes please read [changelog](doc/changelog.md).
+
+## technical requirements
+
+command line dependencies:
 * bash (new MacOs use zsh by default)
 * curl
 * jq
 
-The hook will ask you for your labfolder password, in case it cannot find a valid token in `$HOME/.labfolder_token.sh` 
- which is being created during usage.
+## limitations/known issues
 
-#### usage
+* using git from an IDE might result in a problem reading the password from the keyboard. For now divert to pushing from command line
 
-* Copy `scripts/pre-push` to `$PROJECT_ROOT/.git/hooks/pre-push`
-* create 2 needed files below
-* git push as usual and enter password if needed
+## user documentation pre-push
 
-**note**: depending on your IDE you might not see the password prompt asking for your labfolder password.
-
-Also 2 files are required:
-
-#### $PROJECT_ROOT/projectId.sh
-this files configures the Labfolder project ID where entries go.
-
-The project id can be found in the url bar of your browser.
-![](doc/images/labfolder_project_id.png)
-
-```bash
-#!/bin/sh
-PROJECTID=3358
-```
-
-#### ~/.labfolder_credentials.sh
+The documentation how to set up and use the pre-push hook can be found in [pre-push.md](doc/pre-push.md)
 
 
-```bash 
-#!/bin/sh
-
-USER='user'
-LABFOLDER_HOST='labfolder.server.de'
-```
-
-![](doc/images/git_push_entries.png)
 
 
-#### Updates
-
-* 2019-09-27: added log messages
-* 2022-11-22: adapted to API change for Labfolder v2.18.8
-* 2023-03-17: adapted to API change for Labfolder v2.19.5
