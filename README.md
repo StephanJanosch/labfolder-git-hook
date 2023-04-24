@@ -1,6 +1,8 @@
 # git hook for Labfolder
 
-This project is about using git hook in conjunction with the electronic lab notebook (ELN) Labfolder.
+This project is about using git hook in conjunction with the electronic lab notebook (ELN) Labfolder. 
+
+- [ ] add why this project exists. GSP, implement local ELN policies,  
 
 * Project Code : `labfolder-git-hook`
 * Lab : Scientific Computing Facility @mpi-cbg.de
@@ -11,12 +13,17 @@ This project is about using git hook in conjunction with the electronic lab note
 
 Currently only one git hook is used: [pre-push](#pre-push). For changes please read [changelog](doc/changelog.md).
 
+- [ ] consider mermaid diagramm here
+
 ## technical requirements
 
 command line dependencies:
 * bash (new MacOs use zsh by default)
 * curl
-* jq
+* jq 
+
+- [ ] add known working versions
+
 
 ## limitations/known issues
 
