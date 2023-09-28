@@ -38,6 +38,6 @@ LABFOLDER_HOST='labfolder.server.de'
 
 ## how to use
 
-Simply do git push as usual. The hook 
+Simply do git push as usual. The hook will create the corresponding entry in the ELN. 
 
 ![](images/git_push_entries.png)
