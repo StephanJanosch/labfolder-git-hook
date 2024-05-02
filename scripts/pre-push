@@ -49,11 +49,11 @@ fi
 #$TOKEN
 
 #do a dummy call to check validity of token
-PROJECTS=`curl -f  -s -u "$TOKEN:" -G  "https://$LABFOLDER_HOST/api/v2/projects?limit=&offset="`
+PROJECTS=`curl -f  -s -H "Authorization: Bearer $TOKEN" -G  "https://$LABFOLDER_HOST/api/v2/projects?limit=&offset="`
 if [ $? == "22" ]
 then
 #    curl failed, now check for the reason
-    PROJECTS=`curl  -s -u "$TOKEN:" -G  "https://$LABFOLDER_HOST/api/v2/projects?limit=&offset="`
+    PROJECTS=`curl  -s -H "Authorization: Bearer $TOKEN" -G  "https://$LABFOLDER_HOST/api/v2/projects?limit=&offset="`
     MESSAGE=`echo $PROJECTS | jq -r '.message'`
     if [[ $MESSAGE == "Invalid token" ]]
     then
@@ -82,7 +82,7 @@ fi
 
 #create entry
 POSTJSON="{\"title\": \"git push\",\"project_id\": \"$PROJECTID\"}"
-ENTRY=`curl -s -f -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/entries"`
+ENTRY=`curl -s -f -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/entries"`
 if [ $? != 0 ]
 then
     echo "error: could not create labfolder entry"
@@ -112,7 +112,7 @@ do
     }\
 ]}"
 
-curl -f -s -S -u "$TOKEN:" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/elements/data" > /dev/null
+curl -f -s -S -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d "$POSTJSON" "https://$LABFOLDER_HOST/api/v2/elements/data" > /dev/null
         if [ $? != 0 ]
         then
             echo "error: could not create labfolder data element entry"
